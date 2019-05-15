@@ -10,7 +10,7 @@
 #include <Windows.h>
 #include <stdio.h>
 
-// так как ниже встречаются обознаения CHAR и UINT, которых по умолчанию компилятор не понимает, обозначим их тут 
+// С‚Р°Рє РєР°Рє РЅРёР¶Рµ РІСЃС‚СЂРµС‡Р°СЋС‚СЃСЏ РѕР±РѕР·РЅР°С‡РµРЅРёСЏ CHAR Рё UINT, РєРѕС‚РѕСЂС‹С… РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РєРѕРјРїРёР»СЏС‚РѕСЂ РЅРµ РїРѕРЅРёРјР°РµС‚, РѕР±РѕР·РЅР°С‡РёРј РёС… С‚СѓС‚
 #define UINT unsigned int 
 #define CHAR char
 
@@ -38,7 +38,7 @@ union PageKey
 
 
 /* Prepare from 2 chars the key of the same configuration as in PageKey */
-#define CALC_PAGE_KEY( Addr, Color )	(  (Color) + (Addr) << 8 ) //вряд ли задумывалось сдвигать по адресу, скорее предпологалось *(Addr)
+#define CALC_PAGE_KEY( Addr, Color )	(  (Color) + (Addr) << 8 ) //С‚СѓС‚ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ *(Addr)
 
 
 /**
@@ -64,7 +64,7 @@ static PageDesc* PageStrg[ 3 ];
 
 void PageStrgInit()
 {
-	memset( PageStrg, 0, sizeof(&PageStrg) ); // должно быть sizeof(PageStrg)
+	memset( PageStrg, 0, sizeof(&PageStrg) ); // С‚СѓС‚ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ sizeof(PageStrg)
 }
 
 PageDesc* PageFind( void* ptr, char color )
@@ -96,7 +96,7 @@ PageDesc* PageInit( void* ptr, UINT color )
 {
     PageDesc* pg = new PageDesc;
     if( pg )
-        PAGE_INIT(&pg, ptr, color); // должно быть PAGE_INIT(pg, ptr, color);
+        PAGE_INIT(&pg, ptr, color); // С‚СѓС‚ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ PAGE_INIT(pg, ptr, color);
     else
         printf("Allocation has failed\n");
     return pg;
@@ -119,7 +119,7 @@ void PageDump()
 	while( color <= PG_COLOR_RED )
 	{
 		printf("PgStrg[(%s) %u] ********** \n", color, PgColorName[color] );
-		for( PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next ) // ++color даст ошибку, т.к. red - максимальный цвет
+		for( PageDesc* Pg = PageStrg[++color]; Pg != NULL; Pg = Pg->next ) // ++color РІС‹РґР°СЃС‚ РѕС€РёР±РєСѓ, С‚.Рє. red - РЅР°РёР±РѕР»СЊС€РёР№ С†РІРµС‚
 		{
 			if( Pg->uAddr = NULL )
 				continue;
